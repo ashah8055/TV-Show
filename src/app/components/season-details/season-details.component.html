@@ -1,3 +1,26 @@
-<li *ngFor="let hero of results">
-  Season {{ hero.number }}
+<li *ngFor="let hero of results" >
+  <a (click)="selectSeason(hero.number)">Season {{ hero.number }}</a>
 </li>
+<div class="dropdown">
+  <button
+    class="btn btn-secondary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    ng-disabled="disabled"
+  >
+    Season
+  </button>
+  <div
+    class="dropdown-menu"
+    aria-labelledby="dropdownMenuButton"
+    style="max-height: 200px; overflow: auto; "
+    
+  >
+
+    <a class="dropdown-item" href="#" (click)="selectSeason(hero.number)" *ngFor="let hero of results"> {{ hero.number }}</a>
+    </div>
+</div>
+<app-episodes-details [selectedSeasonShow]="seasonTerm"></app-episodes-details>

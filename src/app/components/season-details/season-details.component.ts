@@ -14,16 +14,22 @@ export class SeasonDetailsComponent implements OnInit {
 
  
   results: [];
+  seasonTerm = new Subject<string>();
+  //seasonTerm:string;
   @Input() selectedShow = new Subject<string>();
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.searchService.search2(this.selectedShow)
       .subscribe(results => {
-        console.log("Res 2", results)
+        console.log("Res 2", results,)
         this.results = results;
       });
   }
 
+  selectSeason(value: string): void {
+    this.seasonTerm.next(value)
+    //this.seasonTerm = value;
 
+  }
 }

@@ -38,6 +38,15 @@ export class SearchService {
 
   }
 
+  search3(terms$: Observable<string>): Observable<any> {
+    return terms$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap(term =>
+        this.episodeService(term)),
+        );
+        
+  }
   searchEntries(term): Observable<any> {
 
     let responseOutput = this.http.get(`${this.baseUrl}${`/search/shows?q=`}${term}`)
@@ -54,4 +63,9 @@ export class SearchService {
     return responseOutput;
   }
   
+  episodeService(term): Observable<any>{
+    console.log("Callled episodes", `${this.baseUrl}${`/shows/`}${term}${`/episodes`}`)
+    let responseOutput = this.http.get(`${this.baseUrl}${`/seasons/`}${term}${`/episodes`}`)
+    return responseOutput;
+  }
 }
