@@ -7,7 +7,7 @@
       <li *ngFor="let result of results$" class="list-group-item">
         <div class="row">
           <div class="col-sm">
-            <a href="{{ result.show.url }}"> {{ result.show.name }}</a>
+            <a  (click)="onSelectShow(result.show.id)"> {{ result.show.name }}</a>
           </div>
           <div class="col-sm">
             {{ result.show.premiered }}
@@ -19,5 +19,9 @@
         </div>
       </li>
     </ul>
+  </div>
+  <div>
+      <app-show-details [selectedShow]="selectSearchTerm"></app-show-details>
+      <app-season-details [selectedShow]="selectSearchTerm"> </app-season-details>
   </div>
 </div>

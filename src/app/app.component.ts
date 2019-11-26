@@ -12,6 +12,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   results$: Observable<string>;
   searchTerm$ = new Subject<string>();
+  selectSearchTerm= new Subject<string>();
+  
 
   constructor(private searchService: SearchService) { }
 
@@ -29,6 +31,11 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onSearchChange(value: string): void {
     this.searchTerm$.next(value)
+    
 
+  }
+
+  onSelectShow(value: string): void{
+    this.selectSearchTerm.next(value);
   }
 }
