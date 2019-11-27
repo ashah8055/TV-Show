@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, map, share, mergeMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class SearchService {
@@ -44,28 +44,40 @@ export class SearchService {
       distinctUntilChanged(),
       switchMap(term =>
         this.episodeService(term)),
-        );
-        
+    );
+
+  }
+
+  search4(terms$: Observable<string>): Observable<any> {
+    return terms$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap(term =>
+        this.episodeInfoService(term)),
+    );
+
   }
   searchEntries(term): Observable<any> {
 
     let responseOutput = this.http.get(`${this.baseUrl}${`/search/shows?q=`}${term}`)
     return responseOutput;
   }
-  searchService(term): Observable<any>{
-    console.log("Callled", `${this.baseUrl}${`/shows/`}${term}`)
+  searchService(term): Observable<any> {
     let responseOutput = this.http.get(`${this.baseUrl}${`/shows/`}${term}`)
-    return responseOutput; 
+    return responseOutput;
   }
-  seasonService(term): Observable<any>{
-    console.log("Callled Season", `${this.baseUrl}${`/shows/`}${term}`)
+  seasonService(term): Observable<any> {
     let responseOutput = this.http.get(`${this.baseUrl}${`/shows/`}${term}${`/seasons`}`)
     return responseOutput;
   }
-  
-  episodeService(term): Observable<any>{
-    console.log("Callled episodes", `${this.baseUrl}${`/shows/`}${term}${`/episodes`}`)
+
+  episodeService(term): Observable<any> {
     let responseOutput = this.http.get(`${this.baseUrl}${`/seasons/`}${term}${`/episodes`}`)
     return responseOutput;
   }
+  episodeInfoService(term): Observable<any> {
+    let responseOutput = this.http.get(`${this.baseUrl}${`/episodes/`}${term}`)
+    return responseOutput;
+  }
+
 }

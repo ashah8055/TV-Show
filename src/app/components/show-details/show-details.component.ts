@@ -10,14 +10,15 @@ import { Subject, Observable, of } from 'rxjs';
 export class ShowDetailsComponent implements OnInit {
 
   results: [];
+  showSeasonSummary: boolean = false;
   @Input() selectedShow = new Subject<string>();
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
     this.searchService.search1(this.selectedShow)
       .subscribe(results => {
-        console.log("Res ", results)
         this.results = results;
+        this.showSeasonSummary = true;
       });
 
   }

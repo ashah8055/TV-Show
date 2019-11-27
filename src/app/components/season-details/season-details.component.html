@@ -1,24 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="dropdown" *ngIf="showBlock">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" ng-disabled="disabled">
+        Season
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="max-height: 200px; overflow: auto; ">
+        <button class="dropdown-item" (click)="selectSeason(hero.number)" *ngFor="let hero of results">
+        Season  {{ hero.number }}</button>
+      </div>
 
-<div class="dropdown" *ngIf="showBlock">
-  <button
-    class="btn btn-secondary dropdown-toggle"
-    type="button"
-    id="dropdownMenuButton"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-    ng-disabled="disabled"
-  >
-    Season
-  </button>
-  <ul
-    class="dropdown-menu"
-    aria-labelledby="dropdownMenuButton"
-    style="max-height: 200px; overflow: auto; "
-    
-  >
-
-    <li>class="dropdown-item"  (click)="selectSeason(hero.number)" *ngFor="let hero of results"> {{ hero.number }}</li>
-    </ul>
-</div>
-<app-episodes-details [selectedSeasonShow]="seasonTerm"></app-episodes-details>
+      <app-episodes-details [selectedSeasonShow]="seasonTerm"></app-episodes-details>
+    </div>
+  </div>

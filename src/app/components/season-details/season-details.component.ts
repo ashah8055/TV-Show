@@ -22,8 +22,7 @@ export class SeasonDetailsComponent implements OnInit {
 
   ngOnInit(): void {
       this.searchService.search2(this.selectedShow)
-      .subscribe(results => {
-        console.log("Res 2", results,)
+      .subscribe(results => { 
         this.results = results;
         this.showBlock = true; 
       });

@@ -1,0 +1,20 @@
+<div *ngIf="results!==undefined">
+  <div class="card mb-3 border-0" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="results.image.medium" class="card-img" style="padding-top: 50px;" alt="{{results.name}}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{results.name}}</h5>
+          <p class="card-text">{{results.summary}}</p>
+          <p class="card-text"><small class="text-muted">You are viewing information realted to Episode
+              {{results.number}}</small>
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,43 +1,16 @@
-<p>
-  episodes-details works!
-</p>
-<li *ngFor="let hero of results" >
-  Episode {{hero.number}}
-</li>
- 
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-        <h1>
-          
-        </h1>
-        <div class="container testimonial-group">
-          <div class="row text-center">
-           
-      <div class="col-xs-4">1</div>
-      <!--
-		 -->
-      <div class="col-xs-4">2</div>
-      <!--
-		 -->
-      <div class="col-xs-4">3</div>
-      <!--
-		 -->
-      <div class="col-xs-4">4</div>
-      <!--
-		 -->
-      <div class="col-xs-4">5</div>
-      <!--
-		 -->
-      <div class="col-xs-4">6</div>
-      <!--
-		 -->
-      <div class="col-xs-4">7</div>
-      <!--
-		 -->
-      <div class="col-xs-4">8</div>
-      <!--
-		 -->
-      <div class="col-xs-4">9</div>     </div>
-        </div>
+<div *ngIf="showEpisodeInfo" class="container pt-2">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card" style="width: 18rem;">
+        <ul *ngFor="let hero of results" class="list-group list-group-flush">
+          <li (click)="episodeInfo(hero.number)" class="list-group-item">Episode {{hero.number}}</li>
+
+        </ul>
       </div>
-      
+    </div>
+    <div class="col-sm">
+      <app-episodes-info [episodeInformation]="selectedEpisode"></app-episodes-info>
+    </div>
+
+  </div>
+</div>
