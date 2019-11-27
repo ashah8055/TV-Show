@@ -12,7 +12,8 @@ import { Subject, Observable, of } from 'rxjs';
 })
 export class SeasonDetailsComponent implements OnInit {
 
- 
+  showBlock= false;
+  
   results: [];
   seasonTerm = new Subject<string>();
   //seasonTerm:string;
@@ -20,16 +21,20 @@ export class SeasonDetailsComponent implements OnInit {
   constructor(private searchService: SearchService) { }
 
   ngOnInit(): void {
-    this.searchService.search2(this.selectedShow)
+      this.searchService.search2(this.selectedShow)
       .subscribe(results => {
         console.log("Res 2", results,)
         this.results = results;
+        this.showBlock = true; 
       });
+      
+  
   }
 
   selectSeason(value: string): void {
     this.seasonTerm.next(value)
     //this.seasonTerm = value;
+    
 
   }
 }

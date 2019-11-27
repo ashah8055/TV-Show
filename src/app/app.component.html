@@ -1,27 +1,2 @@
-<div class="container">
-  <div>
-    <input (input)="onSearchChange($event.target.value)" type="text" id="keyword" placeholder="search for artists..."
-      autofocus />
-    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-    <ul *ngIf="results$" class="list-group">
-      <li *ngFor="let result of results$" class="list-group-item">
-        <div class="row">
-          <div class="col-sm">
-            <a  (click)="onSelectShow(result.show.id)"> {{ result.show.name }}</a>
-          </div>
-          <div class="col-sm">
-            {{ result.show.premiered }}
-          </div>
-          <div class="col-sm">
-            <div *ngIf="result.show.rating.average === null">unknown</div>
-            {{result.show.rating.average}}
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div>
-      <app-show-details [selectedShow]="selectSearchTerm"></app-show-details>
-      <app-season-details [selectedShow]="selectSearchTerm"> </app-season-details>
-  </div>
-</div>
+ <app-header></app-header>
+<router-outlet></router-outlet>

@@ -19,6 +19,7 @@ export class ShowDetailsComponent implements OnInit {
         console.log("Res ", results)
         this.results = results;
       });
+
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { SearchService } from '../../search.service';
 import { Subject, Observable, of } from 'rxjs';
 
+
 @Component({
   selector: 'app-episodes-details',
   templateUrl: './episodes-details.component.html',
@@ -21,4 +22,5 @@ export class EpisodesDetailsComponent implements OnInit {
         this.results = results;
       });
   }
+ 
 }
