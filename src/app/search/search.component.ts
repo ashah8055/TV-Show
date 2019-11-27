@@ -49,6 +49,6 @@ export class SearchComponent implements
   }
 
   clearInput() {
-    this.inputSearch = null;
+    window.location.reload()
   }
 }
